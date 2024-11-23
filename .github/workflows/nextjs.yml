@@ -29,10 +29,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Change dir to /website
-        run: |
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Change dir to /website
+        run: |
+          cd ./website
       - name: Detect package manager
         id: detect-package-manager
         run: |
