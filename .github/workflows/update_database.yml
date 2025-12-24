@@ -1,0 +1,23 @@
+name: Update Database on Issue Creation
+
+run-name: ${{ github.actor }} is updating the database :)
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  Update-Database:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Let's see if I can even output local files"
+      - name: Time to check out the repository code
+        uses: actions/checkout@v5
+      - run: ls
+      - run: cat "database.csv"
+      - name: Listing files in repository in a weird way
+        run: ls ${{ github.workspace }}
+      - name: Listing database
+        run: cat "${{github.workspace}}"+"/database.csv"
+      - run: echo "Job status is ${{ job.status }}"
