@@ -1,1 +1,3 @@
-uid,title_main,title_sub,author,series,series_number,format,language,page_count,genre,description,isbn-13,location,borrowed_by,review_shankha,rating_shankha
+uid,title_main,title_sub,author,series,series_number,format,language,original_title_main,original_title_sub,original_author,page_count,genre,description,isbn-13,location,borrowed_by,review_shankha,rating_shankha,publication
+1,The Jungle Book,,"Kipling, Rudyard",,,paperback,english,,,,218,,,9788176061445,lkg,,,8,Projapoti Books
+2,Punascha Professor Shanku,,"Ray, Satyajit",,,hardcover,bengali,পুনশ্চ প্রৌফেসর শঙ্কু,,সত্যজিৎ রায়,106,,,9788172152017,lkg,,,10,Ananda Publishers

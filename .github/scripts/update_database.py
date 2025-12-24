@@ -1,4 +1,5 @@
 import os
+import csv
 
 def main():
     issue_content = os.environ.get("ISSUE_BODY", "No content found")
@@ -6,9 +7,11 @@ def main():
     print(issue_content)
 
     try:
-        with open("database.csv", "w") as f:
+        with open("database.csv", mode="r", encoding="utf-8") as f:
             # f.write("Hello world")
-            print("I could write to the DB but I won't rn")
+            reader = csv.reader(f)
+            for row in reader:
+                print(row)
         print("Successfully wrote to database.csv")
     except Exception as e:
         print(f"An error occurred: {e}")
