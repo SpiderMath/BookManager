@@ -1,6 +1,6 @@
 name: Update Database on Issue Creation
 
-run-name: ${{ github.actor }} is updating the database :)
+run-name: ${{ github.actor }} causing a database update :)
 
 on:
   issues:
@@ -9,15 +9,25 @@ on:
 
 jobs:
   Update-Database:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Let's see if I can even output local files"
       - name: Time to check out the repository code
         uses: actions/checkout@v5
-      - run: ls
-      - run: cat "database.csv"
-      - name: Listing files in repository in a weird way
-        run: ls ${{ github.workspace }}
-      - name: Listing database
-        run: cat "${{github.workspace}}"+"/database.csv"
-      - run: echo "Job status is ${{ job.status }}"
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Let us list out the locally available files for no reason
+        run: ls
+      - name: Listing out the database also for the same reason
+        run: cat "database.csv"
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Run Update Script
+        run: python .github/scripts/update_database.py
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+      - name: Committing Changes and Pushing
+        uses: stefanzweifel/git-auto-commit-action@v7
